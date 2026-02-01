@@ -7,6 +7,7 @@ Predictive analytics for identifying future terrorism hotspots using the Global 
 - **`GTD Analysis.ipynb`** – Full analysis, EDA, modeling, and evaluation (run this for the complete workflow).
 - **`gtd_hotspots/`** – Refactored Python package for reproducibility and reuse.
 - **`run_pipeline.py`** – Command-line script: load → clean → featurize → target → split (no training).
+- **`visualizations.py`** – Run from terminal to answer the 6 analytical questions and save all visualizations to `output/visualization/`.
 
 ## Refactored package (`gtd_hotspots`)
 
@@ -49,6 +50,16 @@ python run_pipeline.py --data terrorism.csv --out-dir . --verbose
 ```
 
 This writes `gtd_cleaned.csv`. Use **GTD Analysis.ipynb** for model training, threshold tuning, and evaluation.
+
+### Run questions and visualizations from terminal
+
+From the project directory (where `gtd_cleaned.csv` or `terrorism.csv` lives):
+
+```bash
+python visualizations.py [--data terrorism.csv] [--out-dir output] [--figures-dir output/visualization]
+```
+
+This prints answers to the 6 analytical questions and saves all graphs as PNGs in `output/visualization/` by default. If `gtd_cleaned.csv` is missing in `--out-dir`, the script builds it from `--data` and trains a small model for Q5/Q6.
 
 ## Data
 
